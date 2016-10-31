@@ -13,7 +13,8 @@ def main():
                 f = open(folder + "/" + file, 'rb')
                 tags = exifread.process_file(f)
                 date = re.sub(":", "-", tags["Image DateTime"].printable)
-                print file, "-->", date
+                date = re.sub(" ", "--", date)
+                print "mv {} {}.jpg".format(folder + "/" + file, folder + "/" + date)
 
 if __name__ == '__main__':
     main()
