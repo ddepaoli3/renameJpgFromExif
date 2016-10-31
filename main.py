@@ -12,7 +12,7 @@ def main():
             if file.endswith(".jpg") or file.endswith(".JPG"):
                 f = open(folder + "/" + file, 'rb')
                 tags = exifread.process_file(f)
-                date = re.sub(":", "-", tags["Image DateTime"].printable)
+                date = re.sub(":", "-", tags["EXIF DateTimeOriginal"].printable)
                 date = re.sub(" ", "--", date)
                 print "mv {} {}.jpg".format(folder + "/" + file, folder + "/" + date)
 
